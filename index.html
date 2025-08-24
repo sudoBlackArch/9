@@ -1,0 +1,280 @@
+<!-- Copyright (C) 2023-2025 anonymous
+
+This file is part of PSFree.
+
+PSFree is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+PSFree is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation Pulse PSFree Host For PS4 9.00</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -webkit-system-font, -apple-system, system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e4e4e7;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #6366f1);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #f4f4f5;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 1.25rem;
+            color: #b1b1e7;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .status-card {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease-out 0.2s both;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #console {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+            color: #22c55e;
+            height: 200px;
+            width: 100%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-y: auto;
+            overflow-x: hidden;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #e4e4e7;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .link-card:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .link-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #6366f1;
+        }
+
+        .link-desc {
+            font-size: 1rem;
+            color: #a1a1aa;
+        }
+
+        .credits {
+            color: #71717a;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .credits a {
+            color: #6366f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .credits a:hover {
+            color: #8b5cf6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* PlayStation branding colors */
+        .ps-blue {
+            color: #00439c;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #6366f1, #00439c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .status-card {
+                height: 280px;
+                padding: 25px 20px;
+            }
+            
+            #console {
+                height: 180px;
+                font-size: 0.85rem;
+            }
+            
+            .links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .link-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+    <script>
+        if (window.applicationCache.status=='0') {
+            window.location.replace("cache.html");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">PlayStation Pulse PSFree Host For PS4 9.00</h1>
+            <p class="subtitle">Online and Offline Exploit Chain Auto by Telegram PlayStation Pulse</p>
+            <p class="description">
+                For PS4 9.00 GoldHEN v2.4b18.5
+            </p>
+        </div>
+
+        <div class="status-card">
+            <pre id="console" class="pulse">Initializing exploit chain...
+Loading kernel modules...
+Preparing payload execution environment...
+
+Ready for payload execution.</pre>
+        </div>
+
+        <div class="footer">
+            <div class="links">
+                <a href="https://t.me/sudoBlackArch" class="link-card" target="_blank" rel="noopener">
+                    <div class="link-title">BlackArch</div>
+                    <div class="link-desc">Developer</div>
+                </a>
+                <a href="https://t.me/PlayStation_Pulse" class="link-card" target="_blank" rel="noopener">
+                    <div class="link-title">PlayStation Pulse</div>
+                    <div class="link-desc">Community Hub</div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="./alert.mjs"></script>
+</body>
+</html>

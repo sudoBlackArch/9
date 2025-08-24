@@ -1,0 +1,32 @@
+CACHE MANIFEST 
+# PSFree-Lapse
+
+alert.mjs
+cache.html
+config.mjs
+index.html
+lapse.mjs
+aio_patches.bin
+goldhen.bin
+auto_goldhen_fix.mjs
+goldhen_config_manager.mjs
+goldhen_plugins_fix.mjs
+psfree.mjs
+kpatch\900.elf
+module\chain.mjs
+module\constants.mjs
+module\int64.mjs
+module\mem.mjs
+module\memtools.mjs
+module\offset.mjs
+module\rw.mjs
+module\utils.mjs
+module\view.mjs
+rop\900.mjs
+
+NETWORK:
+*
+
+SETTINGS:
+prefer-online:
+
